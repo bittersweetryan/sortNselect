@@ -6,3 +6,7 @@ This extention adds selectable functionality to the jQuery UI sortable plugin.  
 2. jQuery UI 1.8 or newer
 3. jQuery UI sortable plugin
 4. jQuery UI theme with icons
+
+## TODO:
+* fix bug where you can move a selected item below the selected list
+* need to add options to the plugin for different sytles
