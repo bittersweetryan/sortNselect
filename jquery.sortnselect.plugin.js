@@ -51,7 +51,7 @@ THE SOFTWARE.
 	
 			target.disableSelection();
 			
-			sortableClick = function(element, event){
+			var sortableClick = function(element, event){
 				if(!element.parent().hasClass("noclick")){
 					if(!element.hasClass("ui-state-hover")){
 				
