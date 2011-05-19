@@ -1,0 +1,5 @@
+#sortnselect { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#sortnselect li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
+#sortnselect li span { float: left; margin-right: .3em; }
+html>body #sortnselect li { height: 1.5em; line-height: 1.2em; }
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
