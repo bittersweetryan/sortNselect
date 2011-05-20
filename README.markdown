@@ -8,6 +8,5 @@ This extention adds selectable functionality to the jQuery UI sortable plugin.  
 4. jQuery UI theme with icons
 
 ## TODO:
-* add textboxes for the line items
 * fix bug where you can move a selected item below the selected list
 * need to add options to the plugin for different sytles

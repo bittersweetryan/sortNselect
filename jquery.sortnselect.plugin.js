@@ -26,10 +26,12 @@ THE SOFTWARE.
 			var target = this;
 			var checkOK = '<span class="ui-icon ui-icon-circle-check"></span>';
 			var handle = '<span class="ui-icon ui-icon-grip-dotted-vertical"></span>';
-			
+			var hiddenInput = $('<input type="hidden" name="selectedItems" id="selectedItems" value="">');
+						
 			target.children().prepend(handle);
 			target.children().addClass("ui-state-default ui-corner-all");
-	
+			target.append(hiddenInput);
+			
 			target.sortable({
 					placeholder: "ui-state-highlight",
 					cursor: "hand",
@@ -37,8 +39,7 @@ THE SOFTWARE.
 						$(this).addClass("noclick");
 					},
 					stop: function(event,ui){
-							$.setShortlist($(this),event)
-							//$.reorderList
+							$.setItems($(this),event)
 					}
 			}).children().click(function(event){
 				sortableClick($(this),event);
@@ -71,7 +72,7 @@ THE SOFTWARE.
 					}
 			
 					$.reorderList(element,element.parent(),event);
-					$.setShortlist(element.parent(),event);
+					$.setItems(element.parent(),event);
 			
 					event.preventDefault();
 				}
@@ -94,18 +95,21 @@ THE SOFTWARE.
 			
 			
 			
-			$.setShortlist = function(theList,event){
-				var shortlistHiddenInput = $("#shortlist");
-				var shortlistVendors = "";
+			$.setItems = function(theList,event){
+				var hiddenInput = $("#selectedItems");
+				var items = "";
 	
 				theList.children(".ui-state-hover").each(function(){
-					shortlistVendors += $(this).children('input:checkbox').val() + ",";	
+					items += $(this).children('input:checkbox').val() + ",";	
 				});
 	
-				shortlistHiddenInput.val(shortlistVendors);
-	
-				console.log(shortlistHiddenInput.val());
+				
+				
+				hiddenInput.val(items.substring(0,items.length - 1));
+				
+				console.log(hiddenInput.val());
 			};	
 		}
 	})
 })(jQuery);
+
