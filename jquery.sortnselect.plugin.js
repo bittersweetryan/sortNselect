@@ -22,7 +22,36 @@ THE SOFTWARE.
 (function($){
 	$.fn.extend({
 		sortnselect: function(){
-		
+			
+			$.reorderList = function(theTarget,theList,event){
+	
+				theTarget.detach();
+
+				if(theList.children(".ui-state-hover").length){
+					theList.children(".ui-state-hover:last").after(theTarget);
+				}
+				else{
+					theList.prepend(theTarget);
+				}
+			};
+			
+			
+			
+			$.setItems = function(theList,event){
+				var hiddenInput = $("#selectedItems");
+				var items = "";
+	
+				theList.children(".ui-state-hover").each(function(){
+					items += $(this).children('input:checkbox').val() + ",";	
+				});
+	
+				
+				
+				hiddenInput.val(items.substring(0,items.length - 1));
+				
+				console.log(hiddenInput.val());
+			};	
+
 			var target = this;
 			var checkOK = '<span class="ui-icon ui-icon-circle-check"></span>';
 			var handle = '<span class="ui-icon ui-icon-grip-dotted-vertical"></span>';
@@ -30,8 +59,14 @@ THE SOFTWARE.
 						
 			target.children().prepend(handle);
 			target.children().addClass("ui-state-default ui-corner-all");
-			target.append(hiddenInput);
-			
+			target.append(hiddenInput);			
+
+			target.children().each(function(){
+				$(this).children().filter(":checkbox").filter(":checked").parent().addClass("ui-state-hover").append(checkOK);
+			});
+				
+			$.setItems(target);			
+
 			target.sortable({
 					placeholder: "ui-state-highlight",
 					cursor: "hand",
@@ -81,34 +116,6 @@ THE SOFTWARE.
 				}
 			}
 		
-			$.reorderList = function(theTarget,theList,event){
-	
-				theTarget.detach();
-
-				if(theList.children(".ui-state-hover").length){
-					theList.children(".ui-state-hover:last").after(theTarget);
-				}
-				else{
-					theList.prepend(theTarget);
-				}
-			};
-			
-			
-			
-			$.setItems = function(theList,event){
-				var hiddenInput = $("#selectedItems");
-				var items = "";
-	
-				theList.children(".ui-state-hover").each(function(){
-					items += $(this).children('input:checkbox').val() + ",";	
-				});
-	
-				
-				
-				hiddenInput.val(items.substring(0,items.length - 1));
-				
-				console.log(hiddenInput.val());
-			};	
 		}
 	})
 })(jQuery);
