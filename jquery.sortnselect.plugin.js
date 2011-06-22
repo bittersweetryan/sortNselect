@@ -74,7 +74,7 @@ THE SOFTWARE.
 						$(this).addClass("noclick");
 					},
 					stop: function(event,ui){
-							$.setItems($(this),event)
+							$.setItems($(this),event);
 					}
 			}).children().click(function(event){
 				sortableClick($(this),event);
@@ -114,9 +114,9 @@ THE SOFTWARE.
 				else{
 					element.parent().removeClass("noclick");
 				}
-			}
+			};
 		
 		}
-	})
+	});
 })(jQuery);
 
