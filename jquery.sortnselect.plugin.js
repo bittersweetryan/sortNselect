@@ -95,7 +95,7 @@ THE SOFTWARE.
 						element.children(":checkbox").attr("checked","checked");
 				
 						if(element.children(".ui-icon-circle-check").length === 0){
-							element.append(checkOK);	
+							element.children(":first").after(checkOK);	
 						}				
 					}
 					else{
